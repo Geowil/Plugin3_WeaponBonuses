@@ -1,0 +1,55 @@
+User Story:
+	As a developer, I would like to be able to give certain weapons a bonus to the damage that they do on attack.
+	This damage bonus should be able to be applied to any or all types of attacks.
+
+Requirements:
+	Write a plugin
+		Plugin Settings:
+			Enable Weapon Bonuses
+				True/False
+				Allows for the system to start enabled or disabled.
+
+		Plugin Commands:
+			EnableWeaponBonuses
+				Parameters:
+					Boolean
+						True/False
+				Allows the weapon damage bonus system to be disabled or enabled from in-game through a plugin command.
+
+		Script Calls:
+			None
+
+		Notetag:
+			Weapon:
+				Bonus
+					Decimal
+					Positive/Negative
+
+				BonusFormula
+					String
+					The formula that will be used to modify attack damage
+
+				SkillType
+					Integer
+					ID for the skill type that this bonus should apply to.  If 0 is used, it applies to all skill types.
+
+	How should this be used?
+		Notetags are added to the note boxes of the weapons that should be used by the system.  On attack, calculated damage
+		is modified using the bonus and bonus formula for the applicable skill types configured.
+
+
+	Edge Case:
+		BonusFormula is invalid or contains invalid variable names
+			Problem:
+				This will cause the game to crash as eval expects the information a string to be present and properly formatted
+
+			Handle:
+				Wrap the eval statement in a try/catch.  On failure, use unmodified damage.
+
+		Invalid skill type id is used
+			Problem:
+				If the skill type id is not valid, this might cause crashes or at the very least would result in abberant
+				behaviors within the plugin.
+
+			Handle:
+				Check if the id exists and if not use the unmodified damage.
