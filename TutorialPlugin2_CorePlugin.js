@@ -21,7 +21,7 @@ tutorialCore.coreSettings.plugins = [
 		installed: false
 	},
 	{
-		name: "TutorialPlugin2_WeaponBonuses",
+		name: "TutorialPlugin3_WeaponBonuses",
 		installed: false
 	}
 ];
@@ -224,9 +224,10 @@ function getInstalledPlugins(){
 function processWeaponNoteTags(pluginNames) {
 	let weaponNotetagData = [];
 	let nullIdTracker = 0;
-	for (let weapon of $dataWeapon) {
+	for (let weapon of $dataWeapons) {
 		if (weapon) {
 			weaponNotetagData[weapon.id] = {};
+			weaponNotetagData[weapon.id].id = weapon.id;
 			if (weapon.note && weapon.note.length > 0) {
 				for (let tag of pluginNames) {
 					if (weapon.note.includes(tag)) {
@@ -235,7 +236,7 @@ function processWeaponNoteTags(pluginNames) {
 							let inPluginSettings = false;
 							let endNoteTagReached = false;
 
-							if (tag == "TutorialPlugin2_WeaponBonuses") {
+							if (tag == "TutorialPlugin3_WeaponBonuses") {
 								weaponNotetagData[weapon.id].bonus = 0.0;
 								weaponNotetagData[weapon.id].bonusFormula = "";
 								weaponNotetagData[weapon.id].skillTypeId = 0;
@@ -277,8 +278,10 @@ function processWeaponNoteTags(pluginNames) {
 				}
 			}
 		} else {
-			weaponNotetagData[weapon.id] = undefined;
+			weaponNotetagData[nullIdTracker] = undefined;
 		}
+
+		nullIdTracker++;
 	}
 
 	return weaponNotetagData;
