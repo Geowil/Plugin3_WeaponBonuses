@@ -38,7 +38,7 @@ On
 #### TutorialPlugin.WeaponBonuses EnableWeaponBonuses <0/1>
 This plugin command allows you to turn the system on or off from within game.  
 
-**Parameters**
+**Parameters**  
 - 0/1
 - Sets if the system should be enabled or disabled.  0 = off / 1 = on
 
@@ -53,25 +53,30 @@ TutorialPlugin.WeaponBonuses EnableWeaponBonuses 1
 This plugin uses a weapon notetag to set up configuration data per-weapon.  If you only want specific weapons to use this system, include a notetag on just those weapons.  
 
 ##### Attributes
-**Bonus**
+**Bonus**  
 Decimal  
 
 Sets the damage bonus to be applied using the formula.  The default formula treats this value as a decimal and a percentage of the total damage done.  So if you set Bonus to 2, what you will get is the total damage done * 2, or three times the original damage.  
 
 0.5  
+<br/>
 
-**BonusFormula**
+**BonusFormula**  
 String  
 **required**  
 
 Sets the formula to be used to modify the final attack damage.  
+
 Please note that the word 'bonus' MUST be present in this formula for the Bonus attribute to be used in the calculation.  
+
 Please also note that the word 'value' is REQUIRED; if you do not include this, your damage will be calculated without taking the original damage into account.  
+
 It is recommended to use either Math.floor (round down to the nearest 1-s place) or Math.ceil (round up to the nearest 1-s place) to avoid fractional damage (1.5312 damage).  
 
 Math.floor(value + (value * bonus))  
+<br/>
 
-**SkillType**
+**SkillType**  
 Integer  
 **required**  
 
