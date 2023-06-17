@@ -60,7 +60,6 @@ Game_Action.prototype.makeDamageValue = function(target, critical) {
 					if (skillData) {
 						if (weaponPluginData.skillTypeId == -1 ||
 							weaponPluginData.skillTypeId == skillData.stypeId) {
-							//value * weaponPluginData.bonus
 							let bonus = weaponPluginData.bonus;
 							newValue = eval(weaponPluginData.bonusFormula);
 							return newValue;
