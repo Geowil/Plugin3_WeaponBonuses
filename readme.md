@@ -99,7 +99,7 @@ SkillType:-1
 ```  
 
 In the above example, the weapon with this notetag would add 25% to all damage done by the character weilding it.  
-
+<br/>
 
 ```
 <TutorialPlugin3_WeaponBonuses>
@@ -110,7 +110,7 @@ SkillType:1
 ```  
 
 In the example above, the weapon with this notetag would add a 168% damage bonus to all magic attacks done by the character weilding it; assuming 1 is used as a magic skill type.  
-
+<br/>
 
 ```
 <TutorialPlugin3_WeaponBonuses>
